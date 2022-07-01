@@ -1,7 +1,11 @@
 .DS_Store
 node_modules
 /dist
-
+package-lock.json
+package.json
+vue.config.js
+jsconfig.json
+babel.config.js
 
 # local env files
 .env.local
