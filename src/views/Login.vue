@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       ruleForm: {
-        username: 'markerhub',
+        username: 'admin',
         password: '111111'
       },
       rules: {
@@ -58,6 +58,7 @@ export default {
 
             // 获取
             console.log(_this.$store.getters.getUser)
+            console.log(_this.$store.state.token)
 
             _this.$router.push('/blogs')
           })

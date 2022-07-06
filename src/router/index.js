@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Blogs from '../views/Blogs.vue'
 import Login from '../views/Login.vue'
 import BlogDetail from '../views/BlogDetail.vue'
@@ -44,7 +44,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  // 如果路由中要带#，history设为createWebHashHistory()
+  history: createWebHistory(),
   routes
 })
 
