@@ -47,7 +47,7 @@ export default {
         if (valid) {
           // 在axios请求后面的.then箭头函数实际上相当于返回的promise对象中的resolve方法，所以当中的this实际指向promise对象本身，而非widow，故先把全局的this赋给一个变量保存
           const _this = this
-          this.$https.post('/login', this.ruleForm).then((res) => {
+          this.$http.post('/login', this.ruleForm).then((res) => {
             console.log(res.data)
             const jwt = res.headers['authorization']
             const userInfo = res.data.data

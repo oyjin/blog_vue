@@ -34,7 +34,7 @@ export default {
     const blogId = this.$route.params.blogId
     console.log(blogId)
     const _this = this
-    this.$https
+    this.$http
       .get('/blog/' + blogId, {
         headers: {
           Authorization: localStorage.getItem('token')

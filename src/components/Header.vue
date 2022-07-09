@@ -1,6 +1,6 @@
 <template>
   <div class="m-content">
-    <h3>欢迎来到MarkerHub的博客</h3>
+    <h3>欢迎来到hornbill的博客</h3>
     <div class="block">
       <el-avatar :size="50" :src="user.avatar"></el-avatar>
       <div>{{ user.username }}</div>
@@ -26,7 +26,7 @@ export default {
     return {
       user: {
         username: '请先登录',
-        avatar: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+        avatar: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
       },
       hasLogin: false
     }
@@ -34,7 +34,7 @@ export default {
   methods: {
     logout() {
       const _this = this
-      _this.$https
+      _this.$http
         .get('/logout', {
           headers: {
             Authorization: localStorage.getItem('token')
@@ -48,7 +48,7 @@ export default {
     }
   },
   created() {
-    if (this.$store.getters.getUser.username) {
+    if (this.$store.getters.getUser) {
       this.user.username = this.$store.getters.getUser.username
       this.user.avatar = this.$store.getters.getUser.avatar
 

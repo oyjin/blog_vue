@@ -58,7 +58,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const _this = this
-          this.$https
+          this.$http
             .post('/blog/edit', this.ruleForm, {
               headers: {
                 Authorization: localStorage.getItem('token')
@@ -83,18 +83,30 @@ export default {
       this.$refs[formName].resetFields()
     }
   },
-  created() {
+  async created() {
     const blogId = this.$route.params.blogId
     console.log(blogId)
-    const _this = this
+    // const _this = this
     if (blogId) {
-      this.$https.get('/blog/' + blogId).then((res) => {
-        const blog = res.data.data
-        _this.ruleForm.id = blog.id
-        _this.ruleForm.title = blog.title
-        _this.ruleForm.description = blog.description
-        _this.ruleForm.content = blog.content
-      })
+      // 常规的axios写法
+      // this.$http.get('/blog/' + blogId).then((res) => {
+      //   const blog = res.data.data
+      //   _this.ruleForm.id = blog.id
+      //   _this.ruleForm.title = blog.title
+      //   _this.ruleForm.description = blog.description
+      //   _this.ruleForm.content = blog.content
+      // })
+      // 解构赋值接收请求结果
+      const { data: res } = await this.$http.get('/blog/' + blogId)
+      if (res.code != 200) {
+        // 此处返回状态码非200的情况会直接被拦截器拦截，如果必须要执行该段逻辑，可以去掉后置拦截，或者在拦截器中规定好不需要拦截的状态码，例如针对某些要特殊处理的返回407，拦截器中放行，代码中if(res.code == 407)进行处理
+        console.log(res.msg)
+      }
+      const blog = res.data
+      this.ruleForm.id = blog.id
+      this.ruleForm.title = blog.title
+      this.ruleForm.description = blog.description
+      this.ruleForm.content = blog.content
     }
   }
 }

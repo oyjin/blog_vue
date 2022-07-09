@@ -35,6 +35,8 @@ import Header from '../components/Header'
 export default {
   name: 'Blogs.vue',
   components: { Header },
+  props: [],
+  mounted() {},
   data() {
     return {
       blogs: {},
@@ -46,7 +48,7 @@ export default {
   methods: {
     page(currentPage) {
       const _this = this
-      _this.$https.get('/blogs?currentPage=' + currentPage).then((res) => {
+      _this.$http.get('/blogs?currentPage=' + currentPage).then((res) => {
         console.log(res)
         _this.blogs = res.data.data.records
         _this.currentPage = res.data.data.current
@@ -65,5 +67,12 @@ export default {
 .mpage {
   margin: 0 auto;
   text-align: center;
+}
+a {
+  text-decoration: none;
+}
+
+.router-link-active {
+  text-decoration: none;
 }
 </style>

@@ -44,7 +44,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  // 如果路由中要带#，history设为createWebHashHistory()
+  // 如果希望路由中带#，history设为createWebHashHistory()
   history: createWebHistory(),
   routes
 })
